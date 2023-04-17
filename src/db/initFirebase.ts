@@ -1,29 +1,33 @@
-import { initializeApp } from 'firebase/app'
+import { initializeApp } from 'firebase/app';
 import {
   getFirestore,
   connectFirestoreEmulator,
   enableMultiTabIndexedDbPersistence
-} from 'firebase/firestore'
+} from 'firebase/firestore';
 import {
   getAuth,
   connectAuthEmulator
   // signInWithCredential,
   // EmailAuthProvider
-} from 'firebase/auth'
+} from 'firebase/auth';
+
+import { connectStorageEmulator, getStorage } from 'firebase/storage';
 
 // the values to initialize the firebase app can be found in your firebase project
-const firebaseConfig = {}
+const firebaseConfig = {};
 
 const initFirebase = async () => {
   try {
-    const app = initializeApp(firebaseConfig)
-    const firestore = getFirestore(app)
-    const auth = getAuth(app)
+    const app = initializeApp(firebaseConfig);
+    const firestore = getFirestore(app);
+    const storage = getStorage(app);
+    const auth = getAuth(app);
 
     if (process.env.NODE_ENV !== 'production') {
-      connectAuthEmulator(auth, 'http://localhost:9099')
-      connectFirestoreEmulator(firestore, 'localhost', 8080)
-      enableMultiTabIndexedDbPersistence(firestore)
+      connectAuthEmulator(auth, 'http://localhost:9099');
+      connectFirestoreEmulator(firestore, 'localhost', 8080);
+      connectStorageEmulator(storage, 'localhost', 9199);
+      enableMultiTabIndexedDbPersistence(firestore);
       /**
        * The following code logins the user automatically to speed up development.
        * For this to work you first need to create a user and then run the command
@@ -36,9 +40,9 @@ const initFirebase = async () => {
       // )
     }
   } catch (err) {
-    console.error(err)
-    return err
+    console.error(err);
+    return err;
   }
-}
+};
 
-export default initFirebase
+export default initFirebase;
