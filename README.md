@@ -15,6 +15,7 @@ For this template to work all you will need is a Firebase project. I recommend u
 - **[Firebase](https://firebase.google.com/)** for Hosting, Database (Firestore) with offline mode enabled, and Authentication
 - **Github Actions** to automate tests and deploys
 - **[material-ui](https://github.com/mui-org/material-ui)** component library
+- **[redux](https://github.com/reduxjs/redux)** for state management
 - **[react-hook-form](https://github.com/react-hook-form/react-hook-form)** for building forms quickly
 - **[react-testing-library](https://testing-library.com/docs/react-testing-library/intro)** for writing tests
 
