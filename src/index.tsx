@@ -6,7 +6,6 @@ import { BrowserRouter } from 'react-router-dom'
 import CssBaseline from '@mui/material/CssBaseline'
 import ErrorBoundary from './components/ErrorBoundary'
 import Error from './pages/Error'
-import { RecoilRoot } from 'recoil'
 import initFirebase from './db/initFirebase'
 
 // material ui theme
@@ -17,6 +16,8 @@ import 'typeface-roboto'
 
 // some global css
 import './index.css'
+import store from './redux/store'
+import { Provider } from 'react-redux'
 
 initFirebase()
 
@@ -26,11 +27,11 @@ root.render(
   <ThemeProvider theme={theme}>
     <CssBaseline />
     <BrowserRouter>
-      <RecoilRoot>
+      <Provider store={store}>
         <ErrorBoundary onError={console.log} errorComponent={<Error />}>
           <App />
         </ErrorBoundary>
-      </RecoilRoot>
+      </Provider>
     </BrowserRouter>
   </ThemeProvider>
 )

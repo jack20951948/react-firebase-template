@@ -9,17 +9,11 @@ import Database from '../../types/Database';
 import { ISessionState, IWorkItemsState, TWorkItemsSlice } from './types';
 
 export const initialState: IWorkItemsState = {
-  selectedWorkItem: {
-    id: '',
-    title: '',
-    artist: '',
-    author: '',
-    year: 0,
-    publishingHouse: '',
-    bookName: '',
-    timestamp: 0,
-    isRepublicEra: false,
-    imageUrl: ''
+  todo: {
+    id: 'test',
+    description: 'string',
+    order: 0,
+    completed: false,
   },
   sessionState: {
     isAuthenticating: false,
@@ -28,18 +22,18 @@ export const initialState: IWorkItemsState = {
   }
 };
 
-const name: string = 'workItems';
+const name: string = 'todo';
 
 // use createSlice for actions that manipulate store
 const workItemsSlice: TWorkItemsSlice = createSlice({
   name,
   initialState,
   reducers: {
-    setSelectedWorkItem(
+    setTodo(
       state: IWorkItemsState,
-      action: PayloadAction<Database.WorkItem>
+      action: PayloadAction<Database.Todo>
     ) {
-      state.selectedWorkItem = action.payload;
+      state.todo = action.payload;
     },
     setSessionState(
       state: IWorkItemsState,
@@ -51,11 +45,11 @@ const workItemsSlice: TWorkItemsSlice = createSlice({
 });
 
 // use createAction for actions that only exists to call sagas
-export const workItemsAction: ActionCreatorWithoutPayload<string> =
-  createAction(`${name}/workItemsAction`);
+export const todoAction: ActionCreatorWithoutPayload<string> =
+  createAction(`${name}/todoAction`);
 
 // export actions created by slice
-export const { setSelectedWorkItem, setSessionState } = workItemsSlice.actions;
+export const { setTodo, setSessionState } = workItemsSlice.actions;
 
 // export reducer created by slice
 export const workItemsReducer: Reducer<IWorkItemsState> =

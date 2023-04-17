@@ -1,7 +1,7 @@
 export { initializeWorkItemsSaga } from './sagas'
 export {
-  workItemsAction,
-  setSelectedWorkItem,
+  todoAction,
+  setTodo,
   setSessionState,
   workItemsReducer
 } from './redux'

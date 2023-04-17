@@ -15,7 +15,6 @@ For this template to work all you will need is a Firebase project. I recommend u
 - **[Firebase](https://firebase.google.com/)** for Hosting, Database (Firestore) with offline mode enabled, and Authentication
 - **Github Actions** to automate tests and deploys
 - **[material-ui](https://github.com/mui-org/material-ui)** component library
-- **[recoil](https://github.com/facebookexperimental/Recoil)** for state management
 - **[react-hook-form](https://github.com/react-hook-form/react-hook-form)** for building forms quickly
 - **[react-testing-library](https://testing-library.com/docs/react-testing-library/intro)** for writing tests
 
@@ -27,6 +26,10 @@ After starting your repo with this template you need to configure your Firebase 
 - Copy your firebase config located at _Firebase Project > Project Settings > Firebase SDK snippet > Config_
 - Paste the firebase config to `src/db/initFirebase.ts` for the respective environment
 - Set your _Firebase Project_ as _default_ at `.firebaserc`
+
+### React
+
+- install package - `yarn install`
 
 ### Automate Deploys to Firebase hosting
 
@@ -40,9 +43,16 @@ Every time a commit is pushed to github, Github will automatically run the CI te
 
 ## Development
 
+### >>>> Make sure you have java installed!! <<<<
+
 Run the commands: `yarn start`. The Firebase server is run as an emulator locally, which means that it won't use any quota of your Firebase project.
 
 The Firestore object has been extended with Typescript to enforce a database schema whenever you use _firebase_ to access your Database, you can define it in `src/types/Database.ts`. You can then match the names of your Firestore Collections to your schema in `src/types/FirestoreCollectionPaths.ts`.
+
+## Deploy
+
+- `yarn build`
+- `yarn firebase deploy`
 
 ## Testing
 

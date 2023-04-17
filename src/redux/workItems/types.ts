@@ -2,7 +2,7 @@ import { Slice, SliceCaseReducers } from '@reduxjs/toolkit';
 import Database from '../../types/Database';
 
 export interface IWorkItemsState {
-  selectedWorkItem: Database.WorkItem;
+  todo: Database.Todo;
   sessionState: ISessionState;
 }
 
