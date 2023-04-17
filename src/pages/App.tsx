@@ -97,6 +97,6 @@ const App = () => {
       <Route path='*' element={<Navigate to={routes.home} />} />
     </Routes>
   );
-}
+};
 
-export default App
+export default App;
