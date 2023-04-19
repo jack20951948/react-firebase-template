@@ -1,12 +1,13 @@
-import { Box, Typography, TextField, Button } from '@mui/material'
-import { Link } from 'react-router-dom'
-import routes from './routes'
-import Wrapper from '../components/Wrapper'
-import AppBar from '../components/AppBar'
-import { useForm } from 'react-hook-form'
-import formErrorMessages from '../utils/formErrorMessages'
-import { useState } from 'react'
-import Database from '../types/Database'
+import { Box, Typography, TextField, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
+import routes from './routes';
+import Wrapper from '../components/Wrapper';
+import AppBar from '../components/AppBar';
+import { useForm } from 'react-hook-form';
+import formErrorMessages from '../utils/formErrorMessages';
+import { useState } from 'react';
+import Database from '../types/Database';
+import PopupModal from '../components/PopupModal';
 
 const Home = () => {
   const {
@@ -14,9 +15,14 @@ const Home = () => {
     handleSubmit,
     reset,
     formState: { errors }
-  } = useForm<{ name: string }>()
+  } = useForm<{ name: string }>();
 
-  const [todos, setTodos] = useState<Database.Todo[]>([])
+  const [todos, setTodos] = useState<Database.Todo[]>([]);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
 
   return (
     <>
@@ -62,8 +68,8 @@ const Home = () => {
                 order: todos.length,
                 completed: false
               }
-            ])
-            reset()
+            ]);
+            reset();
           })}
         >
           <TextField
@@ -80,9 +86,10 @@ const Home = () => {
             Submit
           </Button>
         </form>
+        <PopupModal open={modalOpen} onClose={handleCloseModal} />
       </Wrapper>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
