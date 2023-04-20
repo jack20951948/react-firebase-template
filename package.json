@@ -41,7 +41,7 @@
   },
   "scripts": {
     "start": "concurrently \"yarn start:server\" \"react-scripts start\" -k",
-    "start:server": "firebase emulators:start --only firestore,auth,storage",
+    "start:server": "firebase emulators:start --only firestore,auth,storage,database",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
