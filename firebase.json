@@ -26,9 +26,6 @@
   "storage": {
     "rules": "src/db/storage.rules"
   },
-  "database": {
-    "rules": "src/db/database.rules"
-  },
   "emulators": {
     "firestore": {
       "port": 8080
